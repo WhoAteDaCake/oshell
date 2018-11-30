@@ -2,3 +2,5 @@
   (name lib)
   (public_name oshell)
   (libraries lambda-term lwt))
+
+(include_subdirs unqualified)

@@ -13,7 +13,7 @@
 		"main": "./_build/default/bin/oshell.exe"
 	},
 	"dependencies": {
-		"@opam/dune": "*",
+		"@opam/dune": "1.5.1",
 		"@opam/lambda-term": "*",
 		"@opam/lwt": "^4.0.0",
 		"ocaml": "~4.6.0"
