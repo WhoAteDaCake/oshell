@@ -16,13 +16,23 @@ let cmd_line path out =
 
 let no_runner out path args = Lwt.return ()
 
+let unknown_cmd cmd out path args =
+  Lwt_io.fprintf out "command: %s not found\n" cmd
+
 let handle command =
+  let open Lwt.Infix in
   match String.split_on_char ' ' command with
   | [] ->  (no_runner, [])
   | cmd :: args ->
     match cmd with
     | "ls" -> (Ls.run, args) 
-    | _ -> (no_runner, args)
+    | "reload" -> (Reload.run, args) 
+    | "test" -> ((fun out path args -> Lwt_io.fprintl out "test"), args)
+    | cmd -> 
+      if String.length cmd = 0 then
+        (no_runner, args)
+      else 
+        (unknown_cmd cmd, args)
 
 let rec main path = 
   let open Lwt.Infix in
