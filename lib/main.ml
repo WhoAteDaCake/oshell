@@ -25,9 +25,13 @@ let handle command =
   | [] ->  (no_runner, [])
   | cmd :: args ->
     match cmd with
-    | "ls" -> (Ls.run, args) 
+    (**
+      TODO:
+        Make sure all commands return Lwt_result type 
+      *)
+    | "ls" -> (Ls.run, args)
+    | "cd" -> (Cd.run, args)
     | "reload" -> (Reload.run, args) 
-    | "test" -> ((fun out path args -> Lwt_io.fprintl out "test"), args)
     | cmd -> 
       if String.length cmd = 0 then
         (no_runner, args)

@@ -10,6 +10,7 @@
 		}
 	},
 	"scripts": {
+		"watch": "nodemon -w lib -w bin -x \"esy build\"",
 		"main": "./_build/default/bin/oshell.exe"
 	},
 	"dependencies": {

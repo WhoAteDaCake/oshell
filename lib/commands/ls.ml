@@ -1,5 +1,6 @@
 let not_special_path p = p <> "." && p <> ".."
 
+(* TODO: rewrite in using Lwt unix *)
 let dir_entries path =
   let rec loop desc xs =
     match Unix.readdir desc with
