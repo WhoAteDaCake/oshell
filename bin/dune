@@ -1,0 +1,4 @@
+(executable
+  (name oshell)
+  (public_name oshell)
+  (libraries lib))
