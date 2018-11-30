@@ -6,7 +6,7 @@ let pretify path =
   (* Shouldn't really ever hapen with linux paths *)
   | _ -> "unknown"
   in
-  Printf.sprintf "[%s] $" partial
+  Printf.sprintf "[%s] $ " partial
 
 
 let cmd_line path out = 
