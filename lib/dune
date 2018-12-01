@@ -1,6 +1,6 @@
 (library
   (name lib)
   (public_name oshell)
-  (libraries lambda-term lwt))
+  (libraries lambda-term lwt fpath))
 
 (include_subdirs unqualified)

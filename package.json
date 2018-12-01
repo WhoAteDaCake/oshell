@@ -10,13 +10,15 @@
 		}
 	},
 	"scripts": {
-		"watch": "nodemon -w lib -w bin -x \"esy build\"",
+		"watch": "nodemon -w lib/ -w bin/ -x \"esy build\" -e ml",
 		"main": "./_build/default/bin/oshell.exe"
 	},
 	"dependencies": {
 		"@opam/dune": "1.5.1",
 		"@opam/lambda-term": "*",
 		"@opam/lwt": "^4.0.0",
+		"@opam/fpath": "0.7.2",
+		"@opam/result": "1.3",
 		"ocaml": "~4.6.0"
 	},
 	"devDependencies": {
