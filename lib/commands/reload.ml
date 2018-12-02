@@ -9,4 +9,4 @@ let run out path args =
   let open Lwt.Infix in
   Unix.execv script_file [||] |> ignore;
   (* If execv works, this will never execute *)
-  Lwt.return ()
+  Lwt_result.return path

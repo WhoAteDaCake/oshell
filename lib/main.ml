@@ -29,9 +29,9 @@ let handle_cmd cmd =
       TODO:
         Make sure all commands return Lwt_result type 
       *)
-    (* | "ls" -> (Ls.run, args) *)
-    (* | "cd" -> (Cd.run, args) *)
-    (* | "reload" -> (Reload.run, args)  *)
+    | "ls" -> (Ls.run, args)
+    | "cd" -> (Cd.run, args)
+    | "reload" -> (Reload.run, args) 
     | cmd -> 
       if String.length cmd = 0 then
         (no_runner, args)
@@ -43,6 +43,12 @@ let handle_result out prev_path = function
 | Ok(path) -> Lwt.return path
 | Error(e) -> Lwt.bind (Lwt_io.fprint out e) (fun _ -> Lwt.return prev_path)
   
+(* TODO:
+  Create a record type that handles state changes.
+    - Should contain path
+      - This is needed for calling chdir if dir has changed
+    - Command history
+*)
 let rec main path = 
   let open Lwt.Infix in
   let out = Lwt_io.stdout in

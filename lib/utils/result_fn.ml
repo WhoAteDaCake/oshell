@@ -10,3 +10,7 @@ let (>|=) a f = match a with
 
 let lift2 f ra rb =
   ra >>= (fun a -> rb >|= (fun b -> f a b))
+
+let fp_to_lwt = function
+| Ok(a) -> Lwt_result.return a
+| Error(`Msg m) -> Lwt_result.fail m
