@@ -1,7 +1,9 @@
 open State
+(* Needed for when path ends in / *)
+let non_empty = List.filter (fun s -> String.length s <> 0)
 
 let pretify path =
-  let parts = String.split_on_char '/' path in
+  let parts = String.split_on_char '/' path |> non_empty in
   let partial = match List.rev parts with
     | x :: [] -> "/" ^ x
     | x :: y :: xs -> y ^ "/" ^ x
