@@ -31,6 +31,7 @@ let handle_cmd cmd =
     | "ls" -> Ls.run
     | "cd" -> Cd.run
     | "reload" -> Reload.run 
+    | "touch" -> Touch.run
     | cmd -> 
       if String.length cmd = 0 then
         no_runner
