@@ -12,9 +12,10 @@ let dir_entries path =
   Unix.closedir handle;
   List.filter not_special_path entries
 
-let run out path args = 
+let run args state = 
   let open Lwt.Infix in
-  let entries = dir_entries path in
-  Lwt_list.map_s (fun p -> Lwt_io.fprint out (p ^ " ")) entries
-  >>= (fun _ -> Lwt_io.fprint out "\n")
-  >>= (fun _ ->Lwt_result.return path)
+  let open State in
+  let entries = dir_entries state.path in
+  Lwt_list.map_s (fun p -> Lwt_io.fprint state.out (p ^ " ")) entries
+  >>= (fun _ -> Lwt_io.fprint state.out "\n")
+  >>= (fun _ -> Lwt_result.return state)

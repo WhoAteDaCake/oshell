@@ -5,8 +5,7 @@
  *)
 let script_file = Unix.readlink "/proc/self/exe"
 
-let run out path args = 
-  let open Lwt.Infix in
+let run args state = 
   Unix.execv script_file [||] |> ignore;
   (* If execv works, this will never execute *)
-  Lwt_result.return path
+  Lwt_result.return state
