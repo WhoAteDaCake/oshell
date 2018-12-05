@@ -3,7 +3,7 @@ let not_found path =
     if Sys.is_directory path then
       Lwt_result.fail "Can't touch a directory\n"
     else
-      Lwt_result.fail "File already exists\n"
+      Lwt_result.return path
   with
     Sys_error(_) -> Lwt_result.return path
 
