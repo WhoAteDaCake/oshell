@@ -48,7 +48,7 @@ let handle_result state = function
 let rec main state = 
   let open Lwt.Infix in
   cmd_line state.path state.out
-  >>= (fun _ -> Lwt_io.read_line Lwt_io.stdin)
+  >>= (fun _ -> Read_cmd.run state)
   >>= (fun cmd -> (handle_cmd cmd) state)
   >>= handle_result state
   >>= main
